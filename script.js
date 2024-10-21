@@ -1,4 +1,3 @@
-//your JS code here. If required.
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('loginForm');
   const usernameInput = document.getElementById('username');
@@ -10,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const savedUsername = localStorage.getItem('username');
   const savedPassword = localStorage.getItem('password');
 
+  // Ensure the existing user button is shown if data exists
   if (savedUsername && savedPassword) {
     existingUserButton.style.display = 'block'; // Show the existing user button
   }
@@ -31,6 +31,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     alert(`Logged in as ${username}`);
+
+    // Show the 'Login as existing user' button immediately after logging in
+    if (localStorage.getItem('username') && localStorage.getItem('password')) {
+      existingUserButton.style.display = 'block';
+    }
   });
 
   // Existing user button click handler
